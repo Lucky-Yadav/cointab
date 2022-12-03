@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const Login = () => {
+  const [axioserr, setaxioserr] = useState("")
   
 const token = useSelector((state) => state.auth.token);
     const dispatch = useDispatch();
@@ -38,7 +39,10 @@ const token = useSelector((state) => state.auth.token);
           let token = res.data.token
           localStorage.setItem("logindata", JSON.stringify(loginData));
           console.log(res, token)
-        });
+        }).catch((err) => {
+          console.log(err);
+          setaxioserr(err.response.data.message)
+        })
   }
   if (token) {
     return <Navigate to={"/"}/>
@@ -69,6 +73,7 @@ const token = useSelector((state) => state.auth.token);
           {token ? "log out" : "log in"}
         </Button>
       </div>
+      <div className="err">{ axioserr}</div>
     </div>
   );
 };
