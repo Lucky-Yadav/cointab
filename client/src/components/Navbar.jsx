@@ -41,7 +41,7 @@ const Navbar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Link to={"/"}>Private Route</Link>
+            <Link to={"/"}>Home</Link>
           </Box>
           {token ? (
             <Box
