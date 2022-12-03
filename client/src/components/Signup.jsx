@@ -37,7 +37,7 @@ const handlelogin = () => {
   dispatch(loginloading());
   axios({
     method: "post",
-    url: "http://localhost:3070/users/signup",
+    url: "https://cointab-psi.vercel.app/users/signup",
     data: loginData,
   }).then((res) => {
     dispatch(sucessLogin(res.data));

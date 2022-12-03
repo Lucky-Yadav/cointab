@@ -18,7 +18,7 @@ const Navbar = () => {
        dispatch(loginloading());
        axios({
          method: "post",
-         url: "http://localhost:3070/users/signin",
+         url: "https://cointab-psi.vercel.app/users/signin",
          data: logindata,
        }).then((res) => {
          dispatch(sucessLogin(res.data));

@@ -32,17 +32,19 @@ const token = useSelector((state) => state.auth.token);
         dispatch(loginloading());
         axios({
           method: "post",
-          url: "http://localhost:3070/users/signin",
+          url: "https://cointab-psi.vercel.app/users/signin",
           data: loginData,
-        }).then((res) => {
-          dispatch(sucessLogin(res.data));
-          let token = res.data.token
-          localStorage.setItem("logindata", JSON.stringify(loginData));
-          console.log(res, token)
-        }).catch((err) => {
-          console.log(err);
-          setaxioserr(err.response.data.message)
         })
+          .then((res) => {
+            dispatch(sucessLogin(res.data));
+            let token = res.data.token;
+            localStorage.setItem("logindata", JSON.stringify(loginData));
+            console.log(res, token);
+          })
+          .catch((err) => {
+            console.log(err);
+            setaxioserr(err.response.data.message);
+          });
   }
   if (token) {
     return <Navigate to={"/"}/>
